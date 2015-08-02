@@ -1,8 +1,9 @@
 from twisted.internet import reactor, protocol
 from twisted.words.protocols import irc
 
+
 class LoggingIRCClient(irc.IRCClient):
-    
+
     nickname = 'batuli'
 
     def signedOn(self):
@@ -15,8 +16,8 @@ class LoggingIRCClient(irc.IRCClient):
     def privmsg(self, user, channel, msg):
         user = user.split('!')[0]
         if (user == "batul"):
-            print msg
-        
+            print(msg)
+
 
 def main():
     f = protocol.ReconnectingClientFactory()
