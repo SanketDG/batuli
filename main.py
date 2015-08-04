@@ -7,10 +7,10 @@ class LoggingIRCClient(irc.IRCClient):
     nickname = 'batuli'
 
     def signedOn(self):
-        self.join('#dgplug')
+        self.join('##testbot')
 
     def joined(self, channel):
-        if channel == '#dgplug':
+        if channel == '##testbot':
             self.msg("batul", "givemelogs")
 
     def privmsg(self, user, channel, msg):
