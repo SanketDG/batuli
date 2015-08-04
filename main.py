@@ -4,19 +4,14 @@ from twisted.words.protocols import irc
 
 class LoggingIRCClient(irc.IRCClient):
 
-    nickname = 'batuli'
+    nickname = raw_input("Enter a nickname: ")
 
     def signedOn(self):
         self.join('##testbot')
 
-    def joined(self, channel):
-        if channel == '##testbot':
-            self.msg("batul", "givemelogs")
-
     def privmsg(self, user, channel, msg):
-        user = user.split('!')[0]
-        if (user == "batul"):
-            print(msg)
+        if msg == '~pym':
+            self.msg(channel, 'http://pymbook.readthedocs.org/en/latest/')
 
 
 def main():
