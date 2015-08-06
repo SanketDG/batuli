@@ -13,8 +13,8 @@ class LoggingIRCClient(irc.IRCClient):
         user = user.split('!')[0]
         if msg == '~pym':
             self.msg(channel, 'http://pymbook.readthedocs.org/en/latest/')
-        if msg == 'hello ' + self.nickname:
-            self.msg(channel, 'hello '+ user )
+        if msg.strip() == u'hello ' + self.nickname:
+            self.msg(channel, '{} hello!'.format(user))
         if msg == self.nickname + ' date' or msg == 'date':
             self.msg(channel, "Current date & time " + time.strftime("%c"))
 
