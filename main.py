@@ -1,6 +1,8 @@
 from twisted.internet import reactor, protocol
 from twisted.words.protocols import irc
 import time
+import urllib2
+
 
 class LoggingIRCClient(irc.IRCClient):
 
@@ -21,6 +23,9 @@ class LoggingIRCClient(irc.IRCClient):
             self.quit('')
         if msg == self.nickname + ',' + ' date' or msg == 'date':
             self.msg(channel, "Current date & time " + time.strftime("%c"))
+        if msg == '~random':
+            clf = urllib2.urlopen("http://www.commandlinefu.com/commands/random/plaintext").read()
+            self.msg(channel, clf.split("\n\n")[1])
 
 
 def main():
