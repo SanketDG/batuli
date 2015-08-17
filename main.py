@@ -12,16 +12,16 @@ class LoggingIRCClient(irc.IRCClient):
         self.join('##testbot')
 
     def privmsg(self, user, channel, msg):
+        nick = self.nickname
         user = user.split('!')[0]
+        print(msg)
         if msg == '~pym':
             self.msg(channel, 'http://pymbook.readthedocs.org/en/latest/')
-        if msg == self.nickname + ',' + ' hello':
+        if msg == '{}, hello'.format(nick) or msg == '{}: hello'.format(nick):
             self.msg(channel, '{}, hello!'.format(user))
-        if msg == self.nickname + ',' + ' ping':
+        if msg == '{}, ping'.format(nick) or msg == '{}: ping'.format(nick):
             self.msg(channel, '{}, pong'.format(user))
-        if msg == self.nickname + ',' + ' quit':
-            self.quit('')
-        if msg == self.nickname + ',' + ' date' or msg == 'date':
+        if msg == '{}, date'.format(nick) or msg == '{}: date'.format(nick) or msg == '~date':
             self.msg(channel, "Current date & time " + time.strftime("%c"))
         if msg == '~random':
             clf = urllib2.urlopen("http://www.commandlinefu.com/commands/random/plaintext").read()
