@@ -1,6 +1,6 @@
 # Batuli
 
-An utility irc bot for #dgplug on freenode.
+An utility irc bot for ##testbot on freenode.
 Works on Python 2.7+
 
 ## Instructions
