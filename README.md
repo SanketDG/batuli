@@ -10,7 +10,10 @@ Works on Python 2.7+
 
 ## Current Features
 * `~pym` Gives link to [pymbook](http://pymbook.readthedocs.org/en/latest/)
-* `hello <nickname>` Hello's back!
+* `<nickname>, hello` or `<nickname>: hello` Hello's back!
+* `<nickname>, ping` or `<nickname>: ping` Pong's back!
+* `~date` or `<nickname>, date` or `<nickname>: hello` Print's current date and time.
+* `~random` display's a random snippet from commandlinefu.com
 
 ## LICENSE
 
