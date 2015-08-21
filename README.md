@@ -14,6 +14,7 @@ Works on Python 2.7+
 * `<nickname>, ping` or `<nickname>: ping` Pong's back!
 * `~date` or `<nickname>, date` or `<nickname>: hello` Print's current date and time.
 * `~random` display's a random snippet from commandlinefu.com
+* `~whatis <word>` fetches one sentence summary from wikipedia about word.
 
 ## LICENSE
 
