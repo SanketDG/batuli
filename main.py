@@ -2,6 +2,7 @@ from twisted.internet import reactor, protocol
 from twisted.words.protocols import irc
 import time
 import urllib2
+import wikipedia
 
 
 class LoggingIRCClient(irc.IRCClient):
@@ -9,7 +10,7 @@ class LoggingIRCClient(irc.IRCClient):
     nickname = raw_input("Enter a nickname: ")
 
     def signedOn(self):
-        self.join('##testbot')
+        self.join('##testbot2')
 
     def privmsg(self, user, channel, msg):
         nick = self.nickname
@@ -26,6 +27,9 @@ class LoggingIRCClient(irc.IRCClient):
         if msg == '~random':
             clf = urllib2.urlopen("http://www.commandlinefu.com/commands/random/plaintext").read()
             self.msg(channel, clf.split("\n\n")[1])
+        if msg.startswith("~whatis"):
+            print("yes")
+            self.msg(channel, wikipedia.summary(msg[msg.index(" ")+1:]).decode('utf-8'))
 
 
 def main():
