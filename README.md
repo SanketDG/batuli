@@ -15,6 +15,7 @@ Works on Python 2.7+
 * `~date` or `<nickname>, date` or `<nickname>: hello` Print's current date and time.
 * `~random` display's a random snippet from commandlinefu.com
 * `~whatis <word>` fetches one sentence summary from wikipedia about word.
+* `python main.py filename -l` or `python main.py filename --log` saves the logs of the channel.
 
 ## LICENSE
 

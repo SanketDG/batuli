@@ -3,7 +3,7 @@ from twisted.words.protocols import irc
 import time
 import urllib2
 import wikipedia
-
+import argparse
 
 class LoggingIRCClient(irc.IRCClient):
 
@@ -31,7 +31,19 @@ class LoggingIRCClient(irc.IRCClient):
         if msg.startswith("~whatis"):
             self.msg(channel, wikipedia.summary(
                 msg[msg.index(" ") + 1:], sentences=1).encode('utf-8'))
-
+		
+        parser = argparse.ArgumentParser(description = "Saves logs of ##testbot")
+        group = parser.add_mutually_exclusive_group()
+        group.add_argument("-l", "--log", help =  "Saves the logs of the channel",                          
+                        action = "store_true")
+        parser.add_argument("filename", nargs = '?', help = "Enter the filename to \
+                        save the logs")
+        args = parser.parse_args()
+ 
+        if args.log:
+            with open(args.filename,'a') as fobj:
+                fobj.write('\n' + time.strftime('[%d-%m-%Y %H:%M:%S]') + \
+                    ' <' + user + '> ' + msg)
 
 def main():
     f = protocol.ReconnectingClientFactory()
