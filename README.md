@@ -8,6 +8,12 @@ Works on Python 2.7+
 * `pip install -r requirements.txt`
 * `python main.py`
 
+* To run the bot in logging mode:
+```shell
+python main.py -l <filename>
+```
+The channel logs will be saved in `<filename>`.
+
 ## Current Features
 * `~pym` Gives link to [pymbook](http://pymbook.readthedocs.org/en/latest/)
 * `<nickname>, hello` or `<nickname>: hello` Hello's back!
@@ -15,7 +21,6 @@ Works on Python 2.7+
 * `~date` or `<nickname>, date` or `<nickname>: hello` Print's current date and time.
 * `~random` display's a random snippet from commandlinefu.com
 * `~whatis <word>` fetches one sentence summary from wikipedia about word.
-* `python main.py filename -l` or `python main.py filename --log` saves the logs of the channel.
 
 ## LICENSE
 
