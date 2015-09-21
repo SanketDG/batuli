@@ -6,6 +6,20 @@ import wikipedia
 import argparse
 
 
+def help():
+    """
+I am a bot.
+
+~pym -- Gives link to pymbook.
+<nickname>, hello or <nickname>: hello -- Hello's back!
+<nickname>, ping or <nickname>: ping -- Pong's back!
+~date or <nickname>, date or <nickname>: date -- Print current date and time.
+~random -- display's a random snippet from commandlinefu.com
+~whatis <word> -- fetches one sentence summary from wikipedia about word.
+~help -- displays this help message
+    """
+
+
 class LoggingIRCClient(irc.IRCClient):
 
     def __init__(self):
@@ -23,6 +37,8 @@ class LoggingIRCClient(irc.IRCClient):
     def privmsg(self, user, channel, msg):
         nick = self.nickname
         user = user.split('!')[0]
+        if msg == '~help':
+            self.msg(user, help.__doc__)
         if msg == '~pym':
             self.msg(channel, 'http://pymbook.readthedocs.org/en/latest/')
         if msg == '{}, hello'.format(nick) or msg == '{}: hello'.format(nick):

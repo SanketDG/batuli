@@ -18,9 +18,10 @@ The channel logs will be saved in `<filename>`.
 * `~pym` Gives link to [pymbook](http://pymbook.readthedocs.org/en/latest/)
 * `<nickname>, hello` or `<nickname>: hello` Hello's back!
 * `<nickname>, ping` or `<nickname>: ping` Pong's back!
-* `~date` or `<nickname>, date` or `<nickname>: hello` Print's current date and time.
+* `~date` or `<nickname>, date` or `<nickname>: date` Print's current date and time.
 * `~random` display's a random snippet from commandlinefu.com
 * `~whatis <word>` fetches one sentence summary from wikipedia about word.
+* `~help` display's a help message.
 
 ## LICENSE
 
