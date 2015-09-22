@@ -1,31 +1,35 @@
-from twisted.internet import reactor, protocol
-from twisted.words.protocols import irc
+import argparse
+import textwrap
 import time
 import urllib2
+
+from twisted.internet import reactor, protocol
+from twisted.words.protocols import irc
 import wikipedia
-import argparse
 
 
 def help():
     """
-I am a bot.
+    I am a bot.
 
-~pym -- Gives link to pymbook.
-<nickname>, hello or <nickname>: hello -- Hello's back!
-<nickname>, ping or <nickname>: ping -- Pong's back!
-~date or <nickname>, date or <nickname>: date -- Print current date and time.
-~random -- display's a random snippet from commandlinefu.com
-~whatis <word> -- fetches one sentence summary from wikipedia about word.
-~help -- displays this help message
+    ~pym -- Gives link to pymbook.
+    <nickname>, hello or <nickname>: hello -- Hello's back!
+    <nickname>, ping or <nickname>: ping -- Pong's back!
+    ~date or <nickname>, date or <nickname>: date -- Print current date and time.
+    ~random -- display's a random snippet from commandlinefu.com
+    ~whatis <word> -- fetches one sentence summary from wikipedia about word.
+    ~help -- displays this help message
     """
+parser = argparse.ArgumentParser(
+    formatter_class=argparse.RawDescriptionHelpFormatter,
+    description=textwrap.dedent(help.__doc__))
+parser.add_argument("-l", "--log", help="Saves the logs of the channel")
+args = parser.parse_args()
 
 
 class LoggingIRCClient(irc.IRCClient):
 
     def __init__(self):
-        parser = argparse.ArgumentParser(description="Saves logs of ##testbot")
-        parser.add_argument("-l", "--log", help="Saves the logs of the channel")
-        args = parser.parse_args()
 
         self.args = args
 
@@ -38,7 +42,7 @@ class LoggingIRCClient(irc.IRCClient):
         nick = self.nickname
         user = user.split('!')[0]
         if msg == '~help':
-            self.msg(user, help.__doc__)
+            self.msg(user, textwrap.dedent(help.__doc__))
         if msg == '~pym':
             self.msg(channel, 'http://pymbook.readthedocs.org/en/latest/')
         if msg == '{}, hello'.format(nick) or msg == '{}: hello'.format(nick):
