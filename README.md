@@ -5,6 +5,7 @@ Works on Python 2.7+
 
 ## Instructions
 * `git clone git@github.com:SanketDG/batuli.git`
+* `cd batuli`
 * `pip install -r requirements.txt`
 * `python main.py`
 
